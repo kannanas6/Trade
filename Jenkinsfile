@@ -7,7 +7,7 @@ pipeline {
     CLUSTER_NAME = "autopilot-cluster-1"
     CLUSTER_ZONE = "us-central1-a"
     REGISTRY = "gcr.io/${GCP_PROJECT}"
-    IMAGE_NAME = "api_service"
+    IMAGE_NAME = "gcpdeploy_api_service"
     // This credential ID should match the one stored in Jenkins for your GCP service account JSON key.
     GOOGLE_APPLICATION_CREDENTIALS = credentials('FileGCPAccountDefaultKey')
   }
