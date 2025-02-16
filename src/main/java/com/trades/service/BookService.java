@@ -14,7 +14,7 @@ public class BookService {
     BookRepository bookRepository;
 
     public Book getBookById(Long id){
-
+        System.out.println("It is Working---->");
       Book b=  bookRepository.getById(id);
 if(b==null){
     System.out.println("Book Value is null");
