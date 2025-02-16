@@ -9,7 +9,7 @@ pipeline {
     REGISTRY = "gcr.io/${GCP_PROJECT}"
     IMAGE_NAME = "api_service"
     // This credential ID should match the one stored in Jenkins for your GCP service account JSON key.
-    GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-service-account-key')
+    GOOGLE_APPLICATION_CREDENTIALS = credentials('kubernetes')
   }
 
   stages {
