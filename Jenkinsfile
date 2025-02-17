@@ -41,7 +41,7 @@ pipeline {
       steps {
         // Convert your docker-compose.yml into Kubernetes manifests using Kompose.
       //  sh 'kompose convert -f docker-compose.yml -o k8s-manifests'
-      sh 'rm -f k8s-manifests'
+      sh 'rm -rf k8s-manifests'
        sh 'kompose convert -f docker-compose.yml'
         sh 'mkdir -p k8s-manifests && mv *.yaml k8s-manifests/'
 
