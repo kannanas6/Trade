@@ -40,7 +40,9 @@ pipeline {
     stage('Convert Compose to Kubernetes Manifests') {
       steps {
         // Convert your docker-compose.yml into Kubernetes manifests using Kompose.
-        sh 'kompose convert -f docker-compose.yml'
+        sh 'kompose convert -f docker-compose.yml -o k8s-manifests'
+      // Verify the generated files exist
+        sh 'ls -lah k8s-manifests'
         // Update the generated YAML to use the image in GCR.
         sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' api_service-deployment.yaml"
       }
