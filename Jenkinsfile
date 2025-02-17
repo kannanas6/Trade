@@ -40,12 +40,12 @@ pipeline {
     stage('Convert Compose to Kubernetes Manifests') {
       steps {
         // Convert your docker-compose.yml into Kubernetes manifests using Kompose.
-        sh 'kompose convert -f docker-compose.yml'
+        sh 'kompose convert -f docker-compose.yml -o k8s-manifests'
       // Verify the generated files exist
-      //  sh 'ls -lah k8s-manifests'
+        sh 'ls -lah k8s-manifests'
         // Update the generated YAML to use the image in GCR.k8s-manifests
-       sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' api-service-deployment.yaml"
-       //  sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' k8s-manifests"
+     //  sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' api-service-deployment.yaml"
+       sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' k8s-manifests/*.yaml"
       }
     }
 
@@ -59,7 +59,8 @@ pipeline {
           // Get credentials for your GKE cluster.
           sh "gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${CLUSTER_ZONE} --project ${GCP_PROJECT}"
           // Deploy the generated Kubernetes manifests.
-          sh 'kubectl apply --validate=false -f .'
+          sh "kubectl config current-context"
+           sh "kubectl apply --validate=false -f k8s-manifests/"
         }
       }
     }
