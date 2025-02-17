@@ -40,7 +40,7 @@ pipeline {
     stage('Convert Compose to Kubernetes Manifests') {
       steps {
         // Convert your docker-compose.yml into Kubernetes manifests using Kompose.
-        sh 'kompose convert -f docker-compose.yml -o k8s-manifests'
+        sh 'kompose convert -f docker-compose.yml'
       // Verify the generated files exist
         sh 'ls -lah k8s-manifests'
         // Update the generated YAML to use the image in GCR.k8s-manifests
