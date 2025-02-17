@@ -5,7 +5,7 @@ pipeline {
     // Replace with your GCP project ID and cluster details.
     GCP_PROJECT = "my-first-project-324400"
     CLUSTER_NAME = "autopilot-cluster-1"
-    CLUSTER_ZONE = "us-central1-a"
+    CLUSTER_ZONE = "us-central1"
     REGISTRY = "gcr.io/${GCP_PROJECT}"
     IMAGE_NAME = "gcpdeploy_api_service"
     // This credential ID should match the one stored in Jenkins for your GCP service account JSON key.
