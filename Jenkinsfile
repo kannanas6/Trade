@@ -44,7 +44,7 @@ pipeline {
       // Verify the generated files exist
         sh 'ls -lah k8s-manifests'
         // Update the generated YAML to use the image in GCR.
-        sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' api_service-deployment.yaml"
+        sh "sed -i 's|${IMAGE_NAME}:latest|${REGISTRY}/${IMAGE_NAME}:latest|g' api-service-deployment.yaml"
       }
     }
 
