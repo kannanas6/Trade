@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  api_service:
+  api-service:
     build: .
     restart: always
     ports:
