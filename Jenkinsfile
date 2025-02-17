@@ -58,7 +58,7 @@ pipeline {
           // Get credentials for your GKE cluster.
           sh "gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${CLUSTER_ZONE} --project ${GCP_PROJECT}"
           // Deploy the generated Kubernetes manifests.
-          sh 'kubectl apply -f .'
+          sh 'kubectl apply --validate=false -f .'
         }
       }
     }
